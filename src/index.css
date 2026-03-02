@@ -3,7 +3,7 @@
   --text-color: #fff;
   --btn-bg-color: #383b3f;
   --btn-text-color: #fff;
-
+  --card-bg-color: #343a46;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,21 +28,18 @@ a {
   color: inherit;
 }
 
-
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color);
 }
 
-
-
-
 @media (prefers-color-scheme: light) {
   :root {
     --main-bg-color: #fff;
     --text-color: #000;
-      --btn-bg-color: #16444f;
-  --btn-text-color: #57C4DC;
+    --btn-bg-color: #16444f;
+    --btn-text-color: #57c4dc;
+    --card-bg-color: #ebedf0;
   }
 }
 
@@ -50,8 +47,8 @@ body {
   :root {
     --main-bg-color: #23272f;
     --text-color: #fff;
-      --btn-bg-color: #383b3f;
-  --btn-text-color: #fff;
-
+    --btn-bg-color: #383b3f;
+    --btn-text-color: #fff;
+    --card-bg-color: #343a46;
   }
 }

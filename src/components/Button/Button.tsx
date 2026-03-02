@@ -9,18 +9,12 @@ interface ButtonProps {
   isDisabled?: boolean;
 }
 
-export const Button = ({
-  children,
-  isActive = false,
-  onClick,
-  className = '',
- isDisabled = false,
-}: ButtonProps) => {
+export const Button = ({ children, isActive = false, onClick, className = '', isDisabled = false }: ButtonProps) => {
   return (
     <button
       className={`
         ${styles.btn} 
-        ${isActive ? styles.active : ""} 
+        ${isActive ? styles.active : ''} 
         ${className}
         `.trim()}
       onClick={onClick}
