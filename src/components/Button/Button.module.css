@@ -1,6 +1,36 @@
 .btn {
-    background-color: blueviolet;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    cursor: pointer;
+    transition: border-color 0.25s;
 }
-.primary {
-    background-color: aqua;
+
+.btn:hover {
+    border-color: #2f2f2f;
+}
+
+.btn:focus,
+.btn:focus-visible {
+    outline: 4px auto #2f2f2f;
+}
+
+.btn:disabled {
+    opacity:  0.5;
+    cursor: not-allowed; /*запрет курсора*/
+    pointer-events: none;
+}
+
+.active {
+    color: #000;
+    background-color: #ce7e1d;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.98); /*легкое вдавливание при клике*/
 }
