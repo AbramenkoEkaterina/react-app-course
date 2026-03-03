@@ -1,8 +1,9 @@
-import styles from './HomePage.module.css';
+//import styles from './HomePage.module.css';
 import { API_URL } from '../../constants';
 import { useEffect, useState } from 'react';
 import type { IQuestion } from '../../components/QuestionCard/types';
 import { QuestionCardList } from '../../components/QuestionCardList';
+import { Loader } from '../../components/Loader';
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState<IQuestion[]>([]);
@@ -23,7 +24,8 @@ export const HomePage = () => {
   }, [])
 
   return (
-    <>
+    <> 
+    <Loader />
       <QuestionCardList  questions={questions}/>
 
     </>
