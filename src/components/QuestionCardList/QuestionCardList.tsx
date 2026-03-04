@@ -7,12 +7,12 @@ interface QuestionCardListProps {
   questions: IQuestion[];
 }
 
-export const QuestionCardList = memo(({questions}: QuestionCardListProps) => {
-    return (
-        <div className={styles.cardList}>
-            {questions.map((card, index) => (
+export const QuestionCardList = memo(({ questions }: QuestionCardListProps) => {
+  return (
+    <div className={styles.cardList}>
+      {questions.map((card, index) => (
         <QuestionCard card={card} key={index} />
       ))}
-        </div>
-    )
+    </div>
+  );
 });

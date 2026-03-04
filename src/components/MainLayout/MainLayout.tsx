@@ -9,10 +9,10 @@ export const MainLayout = () => {
     <div className={styles.mainLayout}>
       <Header />
       <div className={styles.mainWrapper}>
-        <main  className={styles.main}>
+        <main className={styles.main}>
           <Outlet />
-          </main>
-        <footer  className={styles.footer}>
+        </main>
+        <footer className={styles.footer}>
           React Question Cards Application | {currentYear} <br />
           by Ekaterina Abramenko
         </footer>
