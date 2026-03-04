@@ -8,6 +8,7 @@ import { useFetch } from '../../hooks/useFetch';
 
 export const HomePage = () => {
   const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [searchValue, setSearchValue] = useState('');
 
   const [getQuestions, isLoading, error] = useFetch<IQuestion[], string>(async (url: string) => {
     const response = await fetch(`${API_URL}/${url}`);
@@ -21,8 +22,13 @@ export const HomePage = () => {
     getQuestions('react');
   }, []);
 
+  const onSearchValueHadler =(e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value)
+  }
+
   return (
     <>
+    <input type='text' value={searchValue} onChange={onSearchValueHadler}/>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
       <QuestionCardList questions={questions} />
