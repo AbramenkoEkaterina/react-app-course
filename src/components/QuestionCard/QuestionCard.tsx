@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
 import styles from './QuestionCard.module.css';
 import type { IQuestion } from './types';
+import { Badge } from '../Badge';
 
 interface QuestionCardProps {
   card: IQuestion;
@@ -10,11 +11,14 @@ interface QuestionCardProps {
 export const QuestionCard = ({ card }: QuestionCardProps) => {
   const navigate = useNavigate();
 
+  const levelVariant = card.level === 1 ? 'primary' : card.level === 2 ? 'warning' : 'alert';
+  const completedVariant = card.completed ? 'success' : 'primary';
+
   return (
     <div className={styles.card}>
       <div className={styles.cardLabels}>
-        <div>Level: {card.level}</div>
-        <div>{card.completed ? 'Completed' : 'Not Completed'}</div>
+        <Badge variant={levelVariant}>Level: {card.level}</Badge>
+        <Badge variant={completedVariant}>{card.completed ? 'Completed' : 'Not Completed'}</Badge>
       </div>
 
       <h5 className={styles.cardTitle}>{card.question}</h5>
