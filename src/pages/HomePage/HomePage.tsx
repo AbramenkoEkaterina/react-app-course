@@ -9,6 +9,7 @@ import { SearchInput } from '../../components/SearchInput';
 import { SortSelect } from '../../components/SortSelect';
 import type { SortOption } from '../../components/SortSelect/SortSelect';
 import { Pagination } from '../../components/Pagination';
+import { PageSizeSelect } from '../../components/PageSizeSelect';
 import type { IPaginatedResponse } from '../../types/api';
 
 const DEFAULT_PER_PAGE = 10;
@@ -18,6 +19,7 @@ export const HomePage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [sortSelectValue, setSortSelectValue] = useState<SortOption>('');
   const [page, setPage] = useState(1);
+  const [countSelectValue, setcountSelectValue] = useState<number>(DEFAULT_PER_PAGE);
 
   //для скролла надо
   const controlsContainerRef = useRef<HTMLDivElement | null>(null);
@@ -55,7 +57,7 @@ export const HomePage = () => {
   }, [questions]);
 
   useEffect(() => {
-    const query = `react?_page=${page}&_per_page=${DEFAULT_PER_PAGE}${sortSelectValue ? `&${sortSelectValue}` : ''}`;
+    const query = `react?_page=${page}&_per_page=${countSelectValue}${sortSelectValue ? `&${sortSelectValue}` : ''}`;
 
     getQuestions(query);
 
@@ -65,7 +67,7 @@ export const HomePage = () => {
     isFirstRender.current = false;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, sortSelectValue]);
+  }, [page, sortSelectValue, countSelectValue]);
 
   const onSearchValueHadler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -81,6 +83,14 @@ export const HomePage = () => {
         <SearchInput value={searchValue} onChange={onSearchValueHadler} />
 
         <SortSelect value={sortSelectValue} onChange={onSortSelectChangeHandler} />
+
+        <PageSizeSelect
+          value={countSelectValue}
+          onChange={(value) => {
+            setcountSelectValue(value);
+            setPage(1);
+          }}
+        />
       </div>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
