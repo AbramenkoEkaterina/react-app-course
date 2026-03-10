@@ -95,11 +95,9 @@ export const HomePage = () => {
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
       <QuestionCardList questions={cards} />
-      {cards.length === 0 ? (
-        <p className={styles.noCardsInfo}>No cards...</p>
-      ) : (
-        <Pagination pages={pagination} currentPage={page} onPageChange={setPage} />
-      )}
+      {cards.length === 0 && <p className={styles.noCardsInfo}>No cards...</p>}
+
+      {questions && questions.pages > 1 && <Pagination pages={pagination} currentPage={page} onPageChange={setPage} />}
     </>
   );
 };
