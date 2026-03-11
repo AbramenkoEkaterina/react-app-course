@@ -8,3 +8,7 @@ export const Loader: React.FC = () => {
     </div>
   );
 };
+
+export const SmallLoader: React.FC = () => {
+  return <span className={styles.smallLoader}></span>;
+};

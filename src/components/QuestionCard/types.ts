@@ -8,4 +8,3 @@ export interface IQuestion {
   completed: boolean;
   editDate?: string;
 }
-
