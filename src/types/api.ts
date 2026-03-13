@@ -7,3 +7,13 @@ export type IPaginatedResponse<T> = {
   next: number | null;
   prev: number | null;
 };
+
+export type CreateQuestionDto = {
+  question: string;
+  answer: string;
+  description: string;
+  resources: string[];
+  level: number;
+  completed: boolean;
+  editDate?: string;
+};

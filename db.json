@@ -564,6 +564,18 @@
       "resources": [],
       "level": 1,
       "completed": false
+    },
+    {
+      "id": "8cc2",
+      "question": "Тестовый вовпрос",
+      "answer": "тест тест тест",
+      "description": "это тестовый вопрос",
+      "resources": [
+        "https://mail.ru",
+        "https://www.youtube.com/watch?v=3M0mCC7yp-c"
+      ],
+      "level": 2,
+      "completed": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
