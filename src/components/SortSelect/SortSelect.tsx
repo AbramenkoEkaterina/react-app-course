@@ -10,12 +10,15 @@ interface SortSelectProps {
 export const SortSelect = ({ value, onChange }: SortSelectProps) => {
   return (
     <select value={value} onChange={onChange} className={styles.select}>
-      <option value="">sort by </option>
-      <hr />
-      <option value="_sort=level">Level ASC</option>
-      <option value="_sort=-level">Level DESC</option>
-      <option value="_sort=completed">completed ASC</option>
-      <option value="_sort=-completed">completed ASC</option>
+      <option value="">Без сортировки</option>
+      <optgroup label="По уровню">
+        <option value="_sort=level">Уровень ↑ (ASC)</option>
+        <option value="_sort=-level">Уровень ↓ (DESC)</option>
+      </optgroup>
+      <optgroup label="По статусу выполнения">
+        <option value="_sort=completed">Выполнено ↑ (ASC)</option>
+        <option value="_sort=-completed">Выполнено ↓ (DESC)</option>
+      </optgroup>
     </select>
   );
 };

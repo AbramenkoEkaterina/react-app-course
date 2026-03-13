@@ -75,6 +75,7 @@ export const HomePage = () => {
 
   const onSortSelectChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortSelectValue(e.target.value as SortOption);
+    setPage(1);
   };
 
   return (
