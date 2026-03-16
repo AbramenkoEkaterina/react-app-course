@@ -38,6 +38,11 @@ const createCardAction = async (prevState: AddQuestionFormState, formData: FormD
         editDate: undefined,
       }),
     });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText || `Request failed: ${response.status}`);
+    }
     await response.json();
     toast.success('New question is successfully created!');
 
