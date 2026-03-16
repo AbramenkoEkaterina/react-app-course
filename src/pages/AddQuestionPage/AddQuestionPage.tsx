@@ -4,6 +4,7 @@ import styles from './AddQuestionPage.module.css';
 import { delayFn } from '../../helpers/delayFn';
 import { toast } from 'react-toastify';
 import { API_URL } from '../../constants';
+import { Loader } from '../../components/Loader';
 
 //тип состояния формы
 export type AddQuestionFormState = {
@@ -73,6 +74,7 @@ export const AddQuestionPage = () => {
   });
   return (
     <>
+      {isPending && <Loader />}
       <h1 className={styles.formTitle}>Add new question</h1>
       <div className={styles.formContainer}>
         <form action={formAction} className={styles.form}>
@@ -120,7 +122,6 @@ export const AddQuestionPage = () => {
               id="resourcesField"
               cols={30}
               rows={5}
-              required
               placeholder="please enter resources separeted by commas"
             ></textarea>
           </div>
