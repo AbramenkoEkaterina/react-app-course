@@ -12,6 +12,7 @@ type QuestionFormProps = {
 export const QuestionForm = ({ formAction, state, isPending, submitBtnText }: QuestionFormProps) => {
   return (
     <form action={formAction} className={styles.form}>
+      <input type="text" hidden name="questionId" defaultValue={state?.id} />
       <div className={styles.formControl}>
         <label htmlFor="questionField">Question: </label>
         <textarea

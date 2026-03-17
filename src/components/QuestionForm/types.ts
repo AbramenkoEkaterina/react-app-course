@@ -6,4 +6,5 @@ export type AddQuestionFormState = {
   resources?: string;
   level?: string;
   clearForm?: boolean;
+  id?: string;
 };

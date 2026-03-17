@@ -17,3 +17,7 @@ export type CreateQuestionDto = {
   completed: boolean;
   editDate?: string;
 };
+
+export type Question = CreateQuestionDto & {
+  id: string;
+};

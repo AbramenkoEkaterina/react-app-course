@@ -563,7 +563,8 @@
       "description": "Потому что React мне очень нравится и я уже много с ним практикуюсь",
       "resources": [],
       "level": 1,
-      "completed": false
+      "completed": false,
+      "editDate": "17.03.2026, 09:47"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
