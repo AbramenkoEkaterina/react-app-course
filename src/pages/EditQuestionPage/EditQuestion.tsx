@@ -6,6 +6,9 @@ import { delayFn } from '../../helpers/delayFn';
 import { API_URL } from '../../constants';
 import { toast } from 'react-toastify';
 import { dateFormat } from '../../helpers/dateFormat';
+import { useFetch } from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
 
 type EditQuestionProps = {
   id?: string;
@@ -67,14 +70,43 @@ const editCardAction = async (prevState: AddQuestionFormState, formData: FormDat
 };
 
 export const EditQuestion = ({ id, initialState = {} }: EditQuestionProps) => {
+  const navigate = useNavigate();
+
   const [formState, formAction, isPending] = useActionState<AddQuestionFormState, FormData>(editCardAction, {
     ...initialState,
     clearForm: false,
   });
+
+  const [removeQuestion, isQuestionRemoving] = useFetch<void, string>(async (questionId: string) => {
+    const response = await fetch(`${API_URL}/react/${questionId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error(`Ошибка удаления: ${response.status}`);
+    }
+
+    toast.success('The question has been successfully removed');
+    navigate('/');
+  });
+
+  const onRemoveQuestionHandler = () => {
+    if (confirm('Are you sure?')) {
+      if (id) {
+        removeQuestion(id);
+      } else {
+        toast.error('ID вопроса не найден');
+      }
+    }
+  };
+
   return (
     <>
       <h1 className={styles.formTitle}>Edit question</h1>
       <div className={styles.formContainer}>
+        <button className={styles.removeBtn} disabled={isPending || isQuestionRemoving} onClick={onRemoveQuestionHandler}>
+          X
+        </button>
+        {(isPending || isQuestionRemoving) && <Loader />}
         <QuestionForm formAction={formAction} state={{ ...formState, id }} isPending={isPending} submitBtnText="Edit Question" />
       </div>
     </>
