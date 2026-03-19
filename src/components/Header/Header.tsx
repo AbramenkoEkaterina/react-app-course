@@ -2,9 +2,17 @@ import { Button } from '../Button';
 import styles from './Header.module.css';
 import ReactLogo from '../../assets/react.svg';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { AUTH_STORAGE } from '../../constants';
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { isAuth, setIsAuth } = useAuth();
+
+  const LoginHandler = () => {
+    localStorage.setItem(AUTH_STORAGE, JSON.stringify(!isAuth));
+    setIsAuth(!isAuth);
+  };
 
   return (
     <header className={styles.header}>
@@ -14,8 +22,10 @@ export const Header = () => {
       </p>
 
       <div className={styles.headerButtons}>
-        <Button onClick={() => navigate('/addquestion')}>Add</Button>
-        <Button>login</Button>
+        {isAuth && <Button onClick={() => navigate('/addquestion')}>Add</Button>}
+        <Button onClick={LoginHandler} isActive={!isAuth}>
+          {isAuth ? 'Logout' : 'Login'}
+        </Button>
       </div>
     </header>
   );

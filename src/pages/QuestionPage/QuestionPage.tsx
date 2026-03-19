@@ -7,6 +7,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { API_URL } from '../../constants';
 import { Loader, SmallLoader } from '../../components/Loader';
 import type { IQuestion } from '../../components/QuestionCard/types';
+import { useAuth } from '../../hooks/useAuth';
 
 export const QuestionPage = () => {
   const checkboxId = useId();
@@ -14,6 +15,7 @@ export const QuestionPage = () => {
   const { id } = useParams<{ id: string }>();
 
   const [card, setCard] = useState<IQuestion | null>(null);
+  const { isAuth } = useAuth();
 
   const [fetchCard, isCardLoading, error] = useFetch<IQuestion>(async () => {
     const response = await fetch(`${API_URL}/react/${id}`);
@@ -98,9 +100,11 @@ export const QuestionPage = () => {
         {isCardUpdating && <SmallLoader />}
       </label>
 
-      <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>
-        Edit Question
-      </Button>
+      {isAuth && (
+        <Button onClick={() => navigate(`/editquestion/${card.id}`)} isDisabled={isCardUpdating}>
+          Edit Question
+        </Button>
+      )}
       <Button onClick={() => navigate('/')} isDisabled={isCardUpdating}>
         Back
       </Button>
