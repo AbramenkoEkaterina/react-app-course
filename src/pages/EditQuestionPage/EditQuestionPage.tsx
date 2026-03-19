@@ -6,7 +6,7 @@ import { Loader } from '../../components/Loader';
 import type { Question } from '../../types/api';
 import { EditQuestion } from './EditQuestion';
 
-export const EditQuestionPage = () => {
+const EditQuestionPage = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState<Question | null>(null);
 
@@ -46,3 +46,5 @@ export const EditQuestionPage = () => {
     </>
   );
 };
+
+export default EditQuestionPage;
