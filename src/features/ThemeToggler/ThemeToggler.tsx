@@ -7,9 +7,10 @@ export const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const updateTheme = e.target.checked === false ? 'light' : 'dark';
-    setTheme(updateTheme);
+    const isChecked = e.target.checked;
+    const updateTheme = isChecked ? 'dark' : 'light';
 
+    setTheme(updateTheme);
     localStorage.setItem(THEME_STORAGE, updateTheme);
   };
 
