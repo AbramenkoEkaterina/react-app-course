@@ -8,7 +8,7 @@ export const ThemeToggler = () => {
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
-    const updateTheme = isChecked ? 'dark' : 'light';
+    const updateTheme = isChecked ? 'light' : 'dark';
 
     setTheme(updateTheme);
     localStorage.setItem(THEME_STORAGE, updateTheme);
@@ -16,7 +16,7 @@ export const ThemeToggler = () => {
 
   return (
     <div className={styles.toggle}>
-      <input type="checkbox" onChange={onChangeHandler} checked={theme === 'dark'} />
+      <input type="checkbox" onChange={onChangeHandler} checked={theme === 'light'} />
       <label></label>
     </div>
   );
