@@ -1,1 +1,0 @@
-export { PageSizeSelect } from './PageSizeSelect';
